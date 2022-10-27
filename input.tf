@@ -6,7 +6,7 @@ variable "name" {
 variable "subnet_ids" {
   type = list(string)
   validation {
-    condition = length(var.subnet_ids) >= 2
+    condition     = length(var.subnet_ids) >= 2
     error_message = "List of subnet IDs. Must be in at least two different availability zones."
   }
 }
@@ -14,4 +14,9 @@ variable "subnet_ids" {
 variable "additional_tags" {
   default = {}
   type    = map(string)
+}
+
+variable "endpoint_public_access" {
+  type    = bool
+  default = true
 }

@@ -1,6 +1,7 @@
 resource "aws_eks_cluster" "this" {
-  name     = var.name
-  role_arn = aws_iam_role.this.arn
+  name                   = var.name
+  endpoint_public_access = var.endpoint_public_access
+  role_arn               = aws_iam_role.this.arn
   vpc_config {
     subnet_ids = var.subnet_ids
   }
