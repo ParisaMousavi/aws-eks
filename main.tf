@@ -10,19 +10,16 @@ resource "aws_eks_cluster" "this" {
     aws_iam_role_policy_attachment.this_AmazonEKSClusterPolicy,
     aws_iam_role_policy_attachment.this_AmazonEKSVPCResourceController,
   ]
-  tags = {
-    Name        = lower(var.name)
-    Environment = lower(var.environment)
-    Project     = lower(var.projectname)
-    Region      = lower(var.region_shortname)
-    CostCenter  = lower(var.costcenter)
-
-  }
+  tags = merge(
+    var.additional_tags,
+    {
+      created-by = "iac-tf"
+    },
+  )
 }
 
 resource "aws_iam_role" "this" {
-  name = "eks-cluster-example"
-
+  name               = "${var.name}-assumerole"
   assume_role_policy = <<POLICY
 {
   "Version": "2012-10-17",
