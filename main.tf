@@ -6,7 +6,7 @@ resource "aws_eks_cluster" "this" {
     aws_iam_role_policy_attachment.this_AmazonEKSVPCResourceController,
   ]
   name                   = var.name
-  # version                = var.version
+  version                = var.eks_version
   endpoint_public_access = var.endpoint_public_access
   role_arn               = aws_iam_role.this.arn
   vpc_config {

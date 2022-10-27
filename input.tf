@@ -2,7 +2,7 @@ variable "name" {
   type = string
 }
 
-variable "version" {
+variable "eks_version" {
   description = "with null value the latest vaersion is used."
   type        = string
   default     = null
