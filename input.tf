@@ -2,6 +2,12 @@ variable "name" {
   type = string
 }
 
+variable "version" {
+  description = "with null value the latest vaersion is used."
+  type        = string
+  default     = null
+}
+
 # Amazon EKS creates cross-account elastic network interfaces in these subnets to allow communication between your worker nodes and the Kubernetes control plane.
 variable "subnet_ids" {
   type = list(string)
