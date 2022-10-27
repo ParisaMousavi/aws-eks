@@ -5,12 +5,13 @@ resource "aws_eks_cluster" "this" {
     aws_iam_role_policy_attachment.this_AmazonEKSClusterPolicy,
     aws_iam_role_policy_attachment.this_AmazonEKSVPCResourceController,
   ]
-  name                   = var.name
-  version                = var.eks_version
-  endpoint_public_access = var.endpoint_public_access
-  role_arn               = aws_iam_role.this.arn
+  name     = var.name
+  version  = var.eks_version
+  role_arn = aws_iam_role.this.arn
   vpc_config {
-    subnet_ids = var.subnet_ids
+    endpoint_private_access = var.endpoint_private_access
+    endpoint_public_access  = var.endpoint_public_access
+    subnet_ids              = var.subnet_ids
   }
   tags = merge(
     var.additional_tags,
