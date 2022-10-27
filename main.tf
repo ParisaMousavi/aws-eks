@@ -6,15 +6,11 @@ resource "aws_eks_cluster" "this" {
     aws_iam_role_policy_attachment.this_AmazonEKSVPCResourceController,
   ]
   name                   = var.name
-  version                = var.version
+  # version                = var.version
   endpoint_public_access = var.endpoint_public_access
   role_arn               = aws_iam_role.this.arn
   vpc_config {
     subnet_ids = var.subnet_ids
-  }
-  outpost_config {
-    control_plane_instance_type = "m5d.large"
-    outpost_arns                = [data.aws_outposts_outpost.example.arn]
   }
   tags = merge(
     var.additional_tags,
