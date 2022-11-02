@@ -3,7 +3,7 @@ resource "aws_eks_cluster" "this" {
   # Otherwise, EKS will not be able to properly delete EKS managed EC2 infrastructure such as Security Groups.
   depends_on = [
     aws_iam_role_policy_attachment.this_AmazonEKSClusterPolicy,
-    aws_iam_role_policy_attachment.this_AmazonEKSVPCResourceController,
+    aws_iam_role_policy_attachment.this_AmazonEKSVPCResourceController
   ]
   name     = var.name
   version  = var.eks_version
