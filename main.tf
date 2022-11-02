@@ -13,6 +13,12 @@ resource "aws_eks_cluster" "this" {
     endpoint_public_access  = var.endpoint_public_access
     subnet_ids              = var.subnet_ids
   }
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
   tags = merge(
     var.additional_tags,
     {
@@ -23,7 +29,7 @@ resource "aws_eks_cluster" "this" {
 
 resource "aws_iam_role" "this" {
   name               = "${var.name}-cluster-role"
-  description = "Allows access to other AWS service resources that are required to operate clusters managed by EKS."
+  description        = "Allows access to other AWS service resources that are required to operate clusters managed by EKS."
   assume_role_policy = <<POLICY
 {
   "Version": "2012-10-17",
