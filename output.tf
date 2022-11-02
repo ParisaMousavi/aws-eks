@@ -3,6 +3,6 @@ output "arn" {
 }
 
 output "name" {
-    description = "Used in : az arc connection"
-  value = aws_eks_cluster.this.name
+  description = "Used in : az arc connection"
+  value       = aws_eks_cluster.this.name
 }

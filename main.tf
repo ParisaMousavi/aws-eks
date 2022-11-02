@@ -22,7 +22,8 @@ resource "aws_eks_cluster" "this" {
 }
 
 resource "aws_iam_role" "this" {
-  name               = "${var.name}-assumerole"
+  name               = "${var.name}-cluster-role"
+  description = "Allows access to other AWS service resources that are required to operate clusters managed by EKS."
   assume_role_policy = <<POLICY
 {
   "Version": "2012-10-17",
