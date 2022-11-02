@@ -13,12 +13,12 @@ resource "aws_eks_cluster" "this" {
     endpoint_public_access  = var.endpoint_public_access
     subnet_ids              = var.subnet_ids
   }
-  egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
+  # egress {
+  #   from_port   = 0
+  #   to_port     = 0
+  #   protocol    = "-1"
+  #   cidr_blocks = ["0.0.0.0/0"]
+  # }
   tags = merge(
     var.additional_tags,
     {
